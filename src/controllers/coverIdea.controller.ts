@@ -7,6 +7,7 @@ import {
 } from "../services/coverIdea.service";
 import { IBookRequest } from "../models/coverIdea";
 import BookRequestSchema from "../models/coverIdea";
+import mongoose from "mongoose";
 
 
 /**
@@ -62,13 +63,22 @@ export const getAllBookRequestsController = async (_req: Request, res: Response)
 export const getBookRequestByIdController = async (req: Request, res: Response):Promise<any> => {
   try {
     const { id } = req.params;
-    const bookRequest = await getBookRequestById(id);
 
-    if (!bookRequest) return res.status(404).json({ message: "Book request not found." });
+    // Validate if the ID is a proper MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid book request ID format." });
+    }
+
+    // Fetch book request
+    const bookRequest = await getBookRequestById(id);
+    if (!bookRequest) {
+      return res.status(404).json({ error: "Book request not found." });
+    }
 
     res.status(200).json(bookRequest);
   } catch (error: any) {
-    res.status(500).json({ message: error.message || "Failed to fetch book request." });
+    console.error("Error fetching book request:", error);
+    res.status(500).json({ error: "Internal server error. Please try again later." });
   }
 };
 

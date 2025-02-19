@@ -30,6 +30,7 @@ export const getBookRequestById = async (id: string): Promise<IBookRequest | nul
   try {
     return await BookRequest.findById(id);
   } catch (error) {
+    console.error("Database error while fetching book request:", error);
     throw new Error("Failed to fetch book request.");
   }
 };

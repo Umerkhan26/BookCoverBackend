@@ -10,15 +10,15 @@ import uploadMiddleware from "../middlewares/upload.middleware";
 const router = express.Router();
 
 // Create a new book request (with image upload)
-router.post("/", uploadMiddleware, createBookRequestController);
+router.post("/createCoverIdea", uploadMiddleware, createBookRequestController);
 
 // Get all book requests
-router.get("/", getAllBookRequestsController);
+router.get("/getCoverIdeas", getAllBookRequestsController);
 
 // Get a specific book request by ID
-router.get("/:id", getBookRequestByIdController);
+router.get("/getCoverIdeasById/:id", getBookRequestByIdController);
 
 // Delete a book request by ID
-router.delete("/:id", deleteBookRequestController);
+router.delete("/deleteCoverIdeasById/:id", deleteBookRequestController);
 
 export default router;

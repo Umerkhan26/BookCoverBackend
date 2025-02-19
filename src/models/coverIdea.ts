@@ -28,6 +28,6 @@ const BookRequestSchema: Schema = new Schema<IBookRequest>({
   comparableCovers: { type: [String], default: [] },
   email: { type: String, required: true },
 });
-
+  
 // Exporting the model
 export default mongoose.model<IBookRequest>("BookRequest", BookRequestSchema);
