@@ -1,4 +1,4 @@
-import BookRequest, { IBookRequest } from "../models/coverIdea";
+import BookRequest, { IBookRequest } from "../models/coverIdea.model";
 
 /**
  * Creates a new book request

@@ -5,8 +5,8 @@ import {
   getBookRequestById,
   deleteBookRequestById,
 } from "../services/coverIdea.service";
-import { IBookRequest } from "../models/coverIdea";
-import BookRequestSchema from "../models/coverIdea";
+import { IBookRequest } from "../models/coverIdea.model";
+import BookRequestSchema from "../models/coverIdea.model";
 import mongoose from "mongoose";
 
 
