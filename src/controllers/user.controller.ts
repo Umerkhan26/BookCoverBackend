@@ -17,20 +17,41 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const verifyEmail = async (req: Request, res: Response):Promise<any> => {
+// export const verifyEmail = async (req: Request, res: Response):Promise<any> => {
+//   try {
+//     const { token } = req.query;
+    
+//     if (!token) {
+//       return res.status(400).json({ message: 'Token is required' });
+//     }
+    
+//     const user = await verifyUserEmail(token as string); 
+//     console.log("Token:", user);
+
+//     res.status(200).json({ message: 'Email verified successfully!', user });
+//   } catch (error: any) {
+//     res.status(error.statusCode || 400).json({ message: error.message || 'Failed to verify email' });
+//   }
+// };
+
+export const verifyEmail = async (req: Request, res: Response): Promise<any> => {
   try {
     const { token } = req.query;
-    
-    if (!token) {
-      return res.status(400).json({ message: 'Token is required' });
-    }
-    
-    const user = await verifyUserEmail(token as string); 
-    console.log("Token:", user);
+    console.log("request recived from frontend", req.query)
 
-    res.status(200).json({ message: 'Email verified successfully!', user });
+    if (!token) {
+      return res.redirect(`http://localhost:5173/register?status=failed&message=Token is required`);
+    }
+
+    const user = await verifyUserEmail(token as string);
+
+    console.log("User Verified:", user);
+
+    return res.redirect(`http://localhost:5173/register?status=success`);
   } catch (error: any) {
-    res.status(error.statusCode || 400).json({ message: error.message || 'Failed to verify email' });
+    console.error("Verification Error:", error.message);
+
+    return res.redirect(`http://localhost:5173/register?status=failed&message=${encodeURIComponent(error.message)}`);
   }
 };
 

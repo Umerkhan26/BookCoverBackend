@@ -22,6 +22,7 @@
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.8",
     "@types/nodemon": "^1.19.6",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "cloudinary": "^1.41.3",
     "dotenv": "^16.4.7",
@@ -33,6 +34,7 @@
     "nodemailer": "^6.10.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.4",
     "@types/bcrypt": "^5.0.2",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.0",

@@ -3,11 +3,11 @@ import { register, verifyEmail, login, getUsers, updateUserStatus, deleteUser } 
 import verifyAdmin from '../middlewares/auth.middleware';
 const router = express.Router();
 
-router.post('/register', register);
+router.post('/register', register); 
 
 router.post('/login', login);
 
-router.get('/verifyEmail', verifyEmail);
+router.get('/verify-email', verifyEmail);
 
 router.get("/getAllUsers", getUsers);
 
