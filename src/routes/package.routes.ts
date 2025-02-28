@@ -4,6 +4,6 @@ import { getPackagesByPage, createPackage } from "../controllers/package.control
 const router = express.Router();
 
 router.get("/getPackagesByPage", getPackagesByPage);
-router.post("/createPackage", createPackage);
+router.get("/getPackagesByPage/:page", getPackagesByPage);  // Use :page as URL parameter
 
 export default router;

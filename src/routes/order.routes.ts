@@ -1,10 +1,12 @@
 import express from "express";
-import { createOrder, getUserOrders, getOrderById } from "../controllers/order.controller";
+import { handleCreateOrder,handleGetAllOrders,handleGetOrdersByUserId } from "../controllers/order.controller";
 
 const router = express.Router();
 
-router.post("/create", createOrder);
-router.get("/user/:userId", getUserOrders);
-// router.get("/:id", getOrderById);
+router.post("/create", handleCreateOrder);
+router.get("/getAllorders", handleGetAllOrders);
+
+
+router.get("/getOrderByUserId/:userId", handleGetOrdersByUserId);  // Fetch orders by userId
 
 export default router;
